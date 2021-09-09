@@ -3,60 +3,39 @@ const exampleMovies = require("./movies");
 function getAllMovieTitles(moviesObj) {
   if (moviesObj.length == 0){
     throw "Error: No movie titles given!"
-  }
+  };
   return moviesObj.map((key) => {
     return key.title;
   });
-}
+};
 
-/**
- * checkIfAnyMovieHasRating()
- * -----------------------------
- * Returns a boolean, representing whether or not any of the movies has been given the provided rating. If the inputted `movies` array is empty, throw an error with a message.
- * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
- * @param {string} [rating="G"] - A movie rating. Defaults to "G".
- * @returns {boolean|Error} Returns `true` if a movie exists in the list with the given rating, otherwise returns `false`.
- *
- * NOTE: You must use the `.some()` method.
- *
- * EXAMPLE:
- *  checkIfAnyMovieHasRating(movies, "G");
- *  //> true
- *
- * EXAMPLE:
- *  checkIfAnyMovieHasRating(movies, "R");
- *  //> false
- */
 function checkIfAnyMovieHasRating(moviesObj, rating) {
   if (moviesObj.length == 0){
     throw "Error: No movie titles given!"
-  }
+  };
   if(!rating){
     rating = "G";
-  }
+  };
   return moviesObj.some((key) => {
     return key.rated == rating;
   });
-}
+};
 
-/**
- * findById()
- * -----------------------------
- * Returns a movie object from an array of objects based on the ID. If the inputted `movies` array is empty, throw an error with a message. If the ID does not match any movie, return `null`.
- * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
- * @param {string} id - A unique `imdbID`.
- * @returns {Object|Error|null} The movie object with the matching `imdbID`.
- *
- * NOTE: You must use the `.find()` method.
- * 
- * EXAMPLE:
- *  findById("tt1979376");
- *  //> {
-      // Toy Story 4
-    };
- */
-function findById() {}
-
+function findById(moviesObj, id) {
+  if (moviesObj.length == 0){
+    throw "Error: No movie titles given!"
+  };
+  result = moviesObj.find((key) => {
+    if (key.imdbID == id) {
+      return { key };
+    }
+  });
+  if (!result){
+    result = null;
+  };
+  return result;
+};
+// accidentally put return null  twice 
 /**
  * filterByGenre()
  * -----------------------------
