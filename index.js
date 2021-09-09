@@ -58,7 +58,14 @@ function findById(moviesObj, id) {
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(moviesObj, genre) {
+  if (moviesObj.length == 0){
+    throw "Error: No movie titles given!"
+  };
+  return moviesObj.filter((key) => {
+    return key.genre.toLowerCase().includes(genre.toLowerCase())
+  });
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
