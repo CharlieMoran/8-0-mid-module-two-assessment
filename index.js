@@ -27,7 +27,17 @@ function getAllMovieTitles(moviesObj) {
  *  checkIfAnyMovieHasRating(movies, "R");
  *  //> false
  */
-function checkIfAnyMovieHasRating() {}
+function checkIfAnyMovieHasRating(moviesObj, rating) {
+  if (moviesObj.length == 0){
+    throw "Error: No movie titles given!"
+  }
+  if(!rating){
+    rating = "G";
+  }
+  return moviesObj.some((key) => {
+    return key.rated == rating;
+  });
+}
 
 /**
  * findById()
