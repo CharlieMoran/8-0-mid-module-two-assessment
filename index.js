@@ -1,36 +1,13 @@
-/*
-  Do not change the line below. If you'd like to run code from this file, you may use the `exampleMovies` variable below to gain access to an array of movies.
-
-  Keep in mind that your functions must still have and use a parameter for accepting all movies.
-*/
 const exampleMovies = require("./movies");
-// Do not change the line above.
 
-/**
- * getAllMovieTitles()
- * -----------------------------
- * Returns all of titles from an array of movies. If the inputted `movies` array is empty, throw an error with a message.
- * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
- * @returns {string[]|Error} An array of strings, which are movie titles.
- *
- * NOTE: You must use the `.map()` method.
- * 
- * EXAMPLE:
- *  getAllMovieTitles(movies);
- *  //> [
-      "Toy Story 4",
-      "Inside Out",
-      "Coco",
-      "Incredibles 2",
-      "Moana",
-      "How to Train Your Dragon",
-      "Paddington",
-      "The Lion King",
-      "Fantasia",
-      "James and the Giant Peach",
-    ];
- */
-function getAllMovieTitles() {}
+function getAllMovieTitles(moviesObj) {
+  if (moviesObj.length == 0){
+    throw "Error: No movie titles given!"
+  }
+  return moviesObj.map((key) => {
+    return key.title;
+  });
+}
 
 /**
  * checkIfAnyMovieHasRating()
