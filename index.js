@@ -56,31 +56,17 @@ function getAllMoviesReleasedAtOrBeforeYear(moviesObj, year) {
 };
 // forgot to replace key with released
 
-/**
- * getRottenTomatoesScoreByMovie()
- * -----------------------------
- * Transform each movie, returning an array of objects where the key is the title of the movie and the value is the score received from Rotten Tomatoes. If there are no movies, throw an error with a message.
- * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
- * @returns {Object[]|Error} An array of movie objects where the key is the movie title and the value is the score received from Rotten Tomatoes.
- * 
- * NOTE: You must use both the `.map()` method and the `.find()` method.
- *
- * EXAMPLE:
- *  getRottenTomatoesScoreByMovie(movies);
- *  //> [
-      { "Toy Story 4": "97%" },
-      { "Inside Out": "98%" },
-      { Coco: "97%" },
-      { "Incredibles 2": "93%" },
-      { Moana: "95%" },
-      { "How to Train Your Dragon": "99%" },
-      { Paddington: "97%" },
-      { "The Lion King": "93%" },
-      { Fantasia: "95%" },
-      { "James and the Giant Peach": "91%" },
-    ];
- */
-function getRottenTomatoesScoreByMovie() {}
+function getRottenTomatoesScoreByMovie(moviesObj) {
+  if (moviesObj.length == 0){
+    throw "Error: No movie titles given!"
+  };
+  return moviesObj.map((key) => {
+    let score = key["ratings"].find((key2) => {
+      return key2.source == "Rotten Tomatoes"
+    });
+    return { [key.title]: score.value};
+  });
+};
 
 // Do not change anything below this line.
 module.exports = {
