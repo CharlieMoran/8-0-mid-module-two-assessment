@@ -36,28 +36,7 @@ function findById(moviesObj, id) {
   return result;
 };
 // accidentally put return null  twice 
-/**
- * filterByGenre()
- * -----------------------------
- * Returns all movie objects with a matching genre. Case-insensitive. If the inputted `movies` array is empty, throw an error with a message. If no movies match the inputted `genre`, return `[]`.
- * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
- * @param {string} genre - The genre of a movie. (e.g. "Fantasy")
- * @returns {Object[]|Error} An array of movies where at least one of the genres matches the `genre` inputted.
- *
- * NOTE: You must use the `.filter()` method.
- * 
- * EXAMPLE:
- *  filterByGenre(movies, "Mystery");
- *  //> [
-      {
-        // Coco
-      }
-    ]
- *
- * EXAMPLE:
- *  filterByGenre(movies, "Horror")
- *  //> []
- */
+
 function filterByGenre(moviesObj, genre) {
   if (moviesObj.length == 0){
     throw "Error: No movie titles given!"
@@ -65,33 +44,17 @@ function filterByGenre(moviesObj, genre) {
   return moviesObj.filter((key) => {
     return key.genre.toLowerCase().includes(genre.toLowerCase())
   });
-}
+};
 
-/**
- * getAllMoviesReleasedAtOrBeforeYear()
- * -----------------------------
- * Returns all movie objects with a `released` year equal to or less than the given year. If the movie array is empty, throw an error with a message.
- * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
- * @param {number} year - A year as a number. (e.g. 2000)
- * @returns {Object[]|Error} An array of movies where the `released` year is equal to or less than the inputted year.
- *
- * NOTE: You must use the `.filter()` method.
- * 
- * EXAMPLE:
- *  getAllMoviesReleasedAtOrBeforeYear(movies, 2000);
- *  //> [
-      {
-        // The Lion King
-      },
-      {
-        // Fantasia
-      },
-      {
-        // James and the Giant Peach
-      }
-    ];
- */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(moviesObj, year) {
+  if (moviesObj.length == 0){
+    throw "Error: No movie titles given!"
+  };
+  return moviesObj.filter(({released}) => {
+    return Number(released.slice(-4)) <= year;
+  });
+};
+// forgot to replace key with released
 
 /**
  * getRottenTomatoesScoreByMovie()
